@@ -25,7 +25,12 @@ class NoteHistory:
 
         hist_dir = self._get_history_dir(note.id)
         now_utc = datetime.now(timezone.utc)
-        ts_str = now_utc.strftime("%Y%m%d_%H%M%S_%f")
+        base_ts = now_utc.strftime("%Y%m%d_%H%M%S_%f")
+        ts_str = base_ts
+        counter = 0
+        while (hist_dir / f"{ts_str}.json").exists():
+            counter += 1
+            ts_str = f"{base_ts}_{counter:04d}"
 
         diff = []
         if prev_content is not None:
