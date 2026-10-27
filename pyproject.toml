@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lunariz"
+version = "1.0.0"
+description = "Ultra-lightweight, calm desktop and CLI note-taking engine for humans and AI agents."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "customtkinter>=5.2.0",
+    "rich>=13.0.0",
+    "mcp>=1.0.0",
+    "watchdog>=3.0.0",
+]
+
+[project.scripts]
+lunar = "lunariz.cli:main"
+lunar-app = "lunariz.gui.app:run_gui"
+lunar-mcp = "lunariz.agent.mcp_server:run_mcp_server"
